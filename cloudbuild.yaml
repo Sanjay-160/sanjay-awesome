@@ -1,5 +1,9 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/silver-ivy-406512/myimagegcr.io/silver-ivy-406512/sanjay-awesome:$SHORT_SHA', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/silver-ivy-406512/myimagegcr.io/silver-ivy-406512/sanjay-awesome:$SHORT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/cloud-run-cd-example/cloud-run-continuous-deployment-example:$SHORT_SHA',
+        '.',
+      ]
