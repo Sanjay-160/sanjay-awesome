@@ -1,15 +1,10 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      [
-        'build',
-        '-t',
-        'gcr.io/cloud-run-cd-example/cloud-run-continuous-deployment-example:$SHORT_SHA',
-        '.',
-      ]
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      [
-        'push',
-        'gcr.io/cloud-run-cd-example/cloud-run-continuous-deployment-example:$SHORT_SHA',
-      ]
+# Step 1: Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/silver-ivy-406512/sanjay-awesome:$COMMIT_SHA', '.']
+
+# Step 2: Push the Docker image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/silver-ivy-406512/sanjay-awesome:$COMMIT_SHA']
+
+images: ['gcr.io/silver-ivy-406512/sanjay-awesome:$COMMIT_SHA']
